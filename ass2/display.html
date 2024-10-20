@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        td button {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        td button:hover {
+            background-color: #c82333;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registered Users</h1>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="usersBody">
+        </tbody>
+    </table>
+
+    <a href="index.html" class="back-btn">Back to Registration</a>
+
+    <script>
+        function display() {
+            let usersBody = document.getElementById("usersBody");
+            usersBody.innerHTML = '';  // Clear existing table data
+
+            let user_records = JSON.parse(localStorage.getItem("users")) || [];
+
+            for (let i = 0; i < user_records.length; i++) {
+                let row = document.createElement("tr");
+
+                let nameCell = document.createElement("td");
+                nameCell.textContent = user_records[i].name;
+
+                let mailCell = document.createElement("td");
+                mailCell.textContent = user_records[i].mail;
+
+                let contactCell = document.createElement("td");
+                contactCell.textContent = user_records[i].contact;
+
+                let deleteCell = document.createElement("td");
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = function() {
+                    deleteUser(i);
+                };
+                deleteCell.appendChild(deleteButton);
+
+                row.appendChild(nameCell);
+                row.appendChild(mailCell);
+                row.appendChild(contactCell);
+                row.appendChild(deleteCell);
+
+                usersBody.appendChild(row);
+            }
+        }
+
+        function deleteUser(index) {
+            let user_records = JSON.parse(localStorage.getItem("users")) || [];
+            user_records.splice(index, 1);  // Remove the user at the given index
+            localStorage.setItem("users", JSON.stringify(user_records));
+            display();  // Refresh the table after deletion
+        }
+
+        display();  // Call display on page load to show stored users
+    </script>
+</body>
+</html>

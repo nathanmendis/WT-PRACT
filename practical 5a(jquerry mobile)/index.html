@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Mobile</title>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        .ui-page {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .ui-content {
+            flex: 1;
+        }
+
+        .ui-page .ui-footer {
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: static; /* Ensure the footer is not sticky */
+        }
+
+        .ui-page .ui-header {
+            background-color: blueviolet;
+            color: white;
+            position: static; /* Ensure the header is not sticky */
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        /* Form styling */
+        form label {
+            font-weight: bold;
+        }
+
+        .form-container {
+            padding: 20px;
+        }
+
+        /* Styling for department list */
+        .department-description {
+            font-size: 0.9em;
+            color: #523636;
+        }
+        .image {
+            width: 300px;
+            height: 300px;
+            justify-content: end;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div data-role="page" id="home">
+        <div data-role="header" id="header" data-theme="b">
+            <h1>Modern College of Engineering</h1>
+            <h4>Approved by SPPU Pune</h4>
+
+            <!-- Navbar at the top of the home page -->
+            <div data-role="navbar" data-grid="c">
+                <ul>
+                    <li><a href="#home" class="ui-btn-active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#department">Engineering Departments</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="content">
+            <h1 style="text-align: center;">Welcome to PES Modern College of Engineering!<h1>
+            <h2>Facilities</h2>
+            <p>The Institute has the state of art infrastructure which includes spacious and well ventilated classrooms, well equipped laboratories, computer centre, language laboratory, audio/video laboratory and Central library. The rooms are well furnished, well lit and air. All the departments in the Institute have Seminar hall which is well equipped to be used for various academic and extracurricular activities. The Institute has the indoor, outdoor sports and gymnasium facility for the students and staff. The Institute has the auditorium with the seating arrangement for more than 500 audiences. Medical facility is provided to staff and students through the health centre. The facility of cafeteria for students and staff is available within the campus. Career counselling and guidance is provided to the students. To impart quality education to students the Institute have collaborations with various industries and industry experts.</p>
+            <p>It offers Engineering and management programs with faculty who are motivated with a quest to promote engineering, technical and quality education.</p>
+
+            <div class="image">
+                <img src="img1.png" alt="">
+            </div>
+        </div>
+
+        <!-- Footer without sticky positioning -->
+        <div data-role="footer" data-theme="b">
+            <h4>&copy; 2024 Modern College of Engineering</h4>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div data-role="page" id="about">
+        <div data-role="header" data-theme="b">
+            <h1>About Us</h1>
+        </div>
+
+        <div data-role="content">
+            <h2>Modern College of Engineering</h2>
+            <p>Our college is recognized as one of the leading educational institutions in the field of engineering. We offer high-quality programs that integrate academic and professional skills...</p>
+        </div>
+
+        <!-- Footer without sticky positioning -->
+        <div data-role="footer" data-theme="b">
+            <div data-role="navbar" data-grid="c">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#department">Engineering Departments</a></li>
+                </ul>
+            </div>
+            <h4>&copy; 2024 Modern College of Engineering</h4>
+        </div>
+    </div>
+
+    <!-- Department Page with Information on Each Department -->
+    <div data-role="page" id="department">
+        <div data-role="header" data-theme="b">
+            <h1>Departments</h1>
+        </div>
+
+        <div data-role="content">
+            <h2>Engineering Departments</h2>
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    Mechanical Engineering
+                    <p class="department-description">Offers extensive knowledge in the fields of thermodynamics, fluid mechanics, and manufacturing processes.</p>
+                </li>
+                <li>
+                    Electronics and Telecommunication Engineering
+                    <p class="department-description">Focuses on communication technologies, signal processing, and electronic circuit design.</p>
+                </li>
+                <li>
+                    Computer Engineering
+                    <p class="department-description">Covers software development, computer systems, and algorithm design for solving complex problems.</p>
+                </li>
+                <li>
+                    Electrical Engineering
+                    <p class="department-description">Deals with the study of electrical systems, power generation, and control systems engineering.</p>
+                </li>
+                <li>
+                    Information Technology Engineering
+                    <p class="department-description">Combines computer science with management information systems and web technologies.</p>
+                </li>
+                <li>
+                    Artificial Intelligence and Data Science
+                    <p class="department-description">Specializes in machine learning, big data analytics, and intelligent systems development.</p>
+                </li>
+                <li>
+                    Artificial Intelligence and Machine Learning
+                    <p class="department-description">Concentrates on creating AI-driven solutions for industrial and research applications using machine learning techniques.</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer without sticky positioning -->
+        <div data-role="footer" data-theme="b">
+            <div data-role="navbar" data-grid="c">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#department">Engineering Departments</a></li>
+                </ul>
+            </div>
+            <h4>&copy; 2024 Modern College of Engineering</h4>
+        </div>
+    </div>
+
+    <!-- Contact Page with Form -->
+    <div data-role="page" id="contact">
+        <div data-role="header" data-theme="b">
+            <h1>Contact Us</h1>
+        </div>
+
+        <div data-role="content">
+            <h2>Get in Touch</h2>
+            <div class="form-container">
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Your name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Your email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea name="message" id="message" placeholder="Your message"></textarea>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer without sticky positioning -->
+        <div data-role="footer" data-theme="b">
+            <div data-role="navbar" data-grid="c">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#department">Engineering Departments</a></li>
+                </ul>
+            </div>
+            <h4>&copy; 2024 Modern College of Engineering</h4>
+        </div>
+    </div>
+</body>
+</html>

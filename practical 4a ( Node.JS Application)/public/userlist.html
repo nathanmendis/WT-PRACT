@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <footer>   &copy; 2024 Nathan Mendis. All Rights Reserved. <br>registraion form shortcut link : <a href="index.html">click here</a></footer>
+    <h1 style="text-align: center;">Registered Users</h1>
+    
+    <table border="1" style="width: 100%; text-align: center; margin-top: 20px;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="userList"></tbody>
+    </table>
+
+    <script>
+        // Fetch users from localStorage and display them in the table
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        const userList = document.getElementById('userList');
+
+        // Function to render users in the table
+        function renderUsers() {
+            userList.innerHTML = ''; // Clear existing rows
+            users.forEach((user, index) => {
+                const row = document.createElement('tr');
+                const nameCell = document.createElement('td');
+                const emailCell = document.createElement('td');
+                const passwordCell = document.createElement('td');
+                const actionCell = document.createElement('td');
+                
+                // Set name, email, and password values
+                nameCell.textContent = user.name;
+                emailCell.textContent = user.email;
+                passwordCell.textContent = user.password; // Display the password
+
+                // Create delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.style.backgroundColor = 'red';
+                deleteBtn.style.color = 'white';
+                deleteBtn.style.border = 'none';
+                deleteBtn.style.padding = '5px 10px';
+                deleteBtn.style.cursor = 'pointer';
+
+                // Add delete functionality
+                deleteBtn.onclick = function() {
+                    deleteUser(index);
+                };
+
+                actionCell.appendChild(deleteBtn);
+
+                row.appendChild(nameCell);
+                row.appendChild(emailCell);
+                row.appendChild(passwordCell);
+                row.appendChild(actionCell);
+
+                userList.appendChild(row);
+            });
+        }
+
+        // Function to delete a user
+        function deleteUser(index) {
+            users.splice(index, 1); // Remove user from array
+            localStorage.setItem('users', JSON.stringify(users)); // Update localStorage
+            renderUsers(); // Re-render the table
+        }
+
+        // Initial render of users
+        renderUsers();
+    </script>
+    
+</body>
+</html>
